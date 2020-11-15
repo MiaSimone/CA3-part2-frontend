@@ -1,7 +1,6 @@
 //import SortingHat from "./Components/SortingHat";
 
-import URL from "../settings";
-import React, { useState, useEffect} from 'react'
+import React from 'react'
 import NoMatch from "./NoMatch";
 import {
     BrowserRouter as Router,

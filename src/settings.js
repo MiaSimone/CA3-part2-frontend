@@ -1,4 +1,4 @@
 
-const URL = "http://localhost:8080/ca3backend";
+const URL = "https://miadefries.com/tomcat/ca3-MiaProject";
 
 export default URL;

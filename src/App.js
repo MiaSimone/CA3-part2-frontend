@@ -1,12 +1,12 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 
-import CatFacts from "./Components/CatFacts";
-import Weather from "./Components/Weather";
-import Loginout from "./Components/Login-out";
-import Home from "./Components/Home";
+import Hogwarts from "./Components/Hogwarts";
+import Characters from "./Components/Characters.js";
+import School from "./Components/School";
+import MyPage from "./Components/MyPage";
+import LoggingInOut from "./Components/Login-out";
 import NoMatch from "./Components/NoMatch";
-import KanyeRest from "./Components/KanyeRest";
 
 import React, {useState} from "react";
 import {
@@ -18,16 +18,18 @@ import {
 } from "react-router-dom";
 
 function Header({isLoggedIn, loginMsg}) {
+  console.log("isLoggedIn: " + isLoggedIn);
+  // If isLoggedIn is true the element after && is rendered
   return (
     <div>
       <ul className="header">
-        <li><NavLink exact activeClassName="active" to="/">Home</NavLink></li>
-        <li><NavLink activeClassName="active" to="/catfacts">Cat Facts</NavLink></li>
-        <li><NavLink activeClassName="active" to="/kanyerest">Kanye Rest</NavLink></li>
+        <li><NavLink exact activeClassName="active" to="/">Hogwarts</NavLink></li>
+        <li><NavLink activeClassName="active" to="/characters">Characters</NavLink></li>
+        <li><NavLink activeClassName="active" to="/school">School</NavLink></li>
 
         {isLoggedIn && (
           <React.Fragment>
-            <li><NavLink activeClassName="selected" to="/weather">Weather</NavLink></li>
+            <li><NavLink activeClassName="active" to="/mypage">My Page</NavLink></li>
           </React.Fragment>
         )}
         <li><NavLink activeClassName="active" to="/login-out">{loginMsg}</NavLink></li>
@@ -57,19 +59,19 @@ function App() {
       <div className="content">
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Hogwarts />
           </Route>
-          <Route path="/catfacts">
-            <CatFacts />
+          <Route path="/characters">
+            <Characters />
           </Route>
-          <Route path="/kanyerest">
-            <KanyeRest />
+          <Route path="/school">
+            <School />
           </Route>
-          <Route path="/weather">
-            <Weather />
+          <Route path="/mypage">
+            <MyPage isLoggedIn={isLoggedIn}/>
           </Route>
           <Route path="/login-out">
-            <Loginout 
+            <LoggingInOut 
               loginMsg={isLoggedIn ? "Logout" : "Login"}
               isLoggedIn={isLoggedIn}
               setLoginStatus={setLoginStatus}
